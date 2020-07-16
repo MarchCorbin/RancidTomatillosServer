@@ -1,14 +1,16 @@
 const express = require('express')
 const { request, response } = require('express')
 const app = express()
+const cors = require('cors')
 
 app.set('port', process.env.PORT || 3001)
 app.locals.title = 'Rancid Tomatillos API'
 
+app.use(cors())
 app.use(express.json())
 
 app.locals.comments = []
-app.locals.favorites = [{movieID: 111}, {movieID: 222}, {movieID: 333}]
+app.locals.favorites = []
 
 app.get('/', (request, response) => {
   response.send('Rancid Tomatillos API')
